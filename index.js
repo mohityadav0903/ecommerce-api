@@ -2,10 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose= require("mongoose");
 const dotenv = require("dotenv");
+const helloRoute=require("./routes/auth")
 dotenv.config();
-app.get('/',(req,res)=>{
-    res.send("hello");
-})
+
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("connected to mongodb")
@@ -15,7 +14,7 @@ mongoose.connect(process.env.MONGO_URL)
 })
 
 
-
+app.use('/api',helloRoute);
 
 
 
