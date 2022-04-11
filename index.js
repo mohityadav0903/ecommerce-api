@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const mongoose= require("mongoose");
 const dotenv = require("dotenv");
-const helloRoute=require("./routes/auth")
+const authRoute=require("./routes/auth")
 dotenv.config();
+app.use(express.json())
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
@@ -14,7 +15,7 @@ mongoose.connect(process.env.MONGO_URL)
 })
 
 
-app.use('/api',helloRoute);
+app.use('/api',authRoute);
 
 
 
